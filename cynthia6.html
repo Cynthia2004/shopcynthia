@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="alert alert-info">
+        <h1>Welcome to Cynthia's</h1>
+        <h3>Have fun shopping!</h3>
+        <p>Shipping and taxes combined are 10% of each item</p>
+      </div>
+    <div class = "container">
+      <div class="row">
+        <div class="col-5">
+          <h1>Items for SALE</h1>
+          <div class="btn-group-vertical">
+                  <button class="btn btn-secondary" onclick="buy('hoodiessweatshirts')">Hoodies & Sweatshirts</button>
+                  <button class="btn btn-secondary" onclick="buy('teestanks')">Tees & Tanks</button>
+                  <button class="btn btn-secondary" onclick="buy('pjslounge')">Pjs and Lounge</button>
+                  <button class="btn btn-secondary" onclick="buy('dresses')">Dresses</button>
+                  <button class="btn btn-secondary" onclick="buy('jacketscoats')">Jackets and Coats</button>
+                  <button class="btn btn-secondary" onclick="buy('accessories')">Accessories</button>
+            </div>
+        </div>
+        <div class="col-3">
+          <h1>Total</h1>
+          <h2 id="total">0 USD</h2>
+          <h2 id="taxes">0 USD (taxes)</h2>
+          <h2 id="shipping">0 USD (shipping)</h2>
+        </div>
+          <div class="col-4">
+            <h1>Shopping Cart</h1>
+            <ul id="cart"></ul>
+        </div>
+      </div>
+    </div>
+    <script>
+    var prices = {
+      hoodiessweatshirts: { price: 40,name: 'Hoodies & Sweatshirts'},
+      teestanks: { price: 12,name: 'Tees & Tanks'},
+      pjslounge: { price: 20,name: 'Pjs and Lounge'},
+      dresses: { price: 50,name: 'Dresses'},
+      jacketscoats: { price: 80,name: 'Jackets & Coats'},
+      accessories: { price: 8,name: 'Accessories'},
+    };
+
+    var prices_2 = {
+      hoodiessweatshirts: { price: 4,name: 'Hoodies & Sweatshirts'},
+      teestanks: { price: 1.2,name: 'Tees & Tanks'},
+      pjslounge: { price: 2,name: 'Pjs and Lounge'},
+      dresses: { price: 5,name: 'Dresses'},
+      jacketscoats: { price: 8,name: 'Jackets & Coats'},
+      accessories: { price: 0.8,name: 'Accessories'},
+    };
+
+    var total = 0;
+    var total_e = document.getElementById('total');
+    var cart_e = document.getElementById('cart');
+    function buy_total(item) {
+      total += prices[item].price;
+      total_e.innerText = total + ' USD';
+      var li = document.createElement('li');
+      cart_e.appendChild(li);
+      li.innerText = prices[item].name;
+    }
+
+    var taxes = 0;
+    var taxes_e = document.getElementById('taxes');
+    function buy_taxes(item) {
+      taxes += prices_2[item].price;
+      taxes_e.innerText = taxes + ' USD';
+    }
+
+    function buy(item) {
+      buy_total(item);
+      buy_taxes(item);
+    }
+
+    </script>
+  </body>
+</html>
